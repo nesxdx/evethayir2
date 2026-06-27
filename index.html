@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url("arka_plan.jpg") center center/cover no-repeat;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+h1{
+    color:white;
+    font-size:45px;
+    text-shadow:2px 2px 10px black;
+    margin-bottom:50px;
+}
+
+button{
+    padding:15px 40px;
+    font-size:25px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#evet{
+    background:#4CAF50;
+    color:white;
+    margin-right:20px;
+}
+
+#evet:hover{
+    transform:scale(1.08);
+}
+
+#hayir{
+    position:absolute;
+    background:#ff4d6d;
+    color:white;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Benim sevgilim olur musun? 💗</h1>
+    <button id="evet">Evet 💖</button>
+    <button id="hayir">Hayır 😅</button>
+</div>
+
+<script>
+const hayir = document.getElementById("hayir");
+const evet = document.getElementById("evet");
+
+function kac(){
+    const x = Math.random() * (window.innerWidth - hayir.offsetWidth);
+    const y = Math.random() * (window.innerHeight - hayir.offsetHeight);
+
+    hayir.style.left = x + "px";
+    hayir.style.top = y + "px";
+}
+
+hayir.addEventListener("mouseenter", kac);
+
+hayir.addEventListener("touchstart", (e)=>{
+    e.preventDefault();
+    kac();
+});
+
+evet.addEventListener("click", ()=>{
+    document.body.innerHTML = `
+    <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        background:url('arka_plan.jpg') center center/cover no-repeat;
+        color:white;
+        text-shadow:2px 2px 8px black;
+        font-size:45px;
+    ">
+        ❤️🥳<br><br>
+        Biliyordum! Seni çok seviyorum. 💖
+    </div>`;
+});
+</script>
+
+</body>
+</html>
